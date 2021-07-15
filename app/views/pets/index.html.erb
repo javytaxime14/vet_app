@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pets</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Breed</th>
+      <th>Birthdate</th>
+      <th>Visits</th>
+      <th><%= link_to 'History', pet_histories_path%></th>
+     
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pets.each do |pet| %>
+      <tr>
+        <td><%= pet.name %></td>
+        <td><%= pet.breed %></td>
+        <td><%= pet.birthdate %></td>
+        <td><%= pet.pet_histories.count%></td>
+        <td><table class="table">
+  <thead>
+    <tr>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>Description</th>
+     
+    </tr>
+  </thead>
+
+  <tbody>
+    <% pet.pet_histories.each do |pet_history| %>
+      <tr>
+        <td><%= pet_history.weight %></td>
+        <td><%= pet_history.height %></td>
+        <td><%= pet_history.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+        </td>
+        <td><%= link_to 'Show', pet %></td>
+        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
+        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pet', new_pet_path %>
+<p><%= link_to 'Clients', clients_path %></p>
